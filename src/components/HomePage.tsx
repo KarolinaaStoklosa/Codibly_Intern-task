@@ -15,6 +15,14 @@ const HomePage = () => {
             console.log(response.data)
             console.log(response.data.data)
         })
+        .catch((err) => {
+            console.log(err.response.status)
+            if (err.response.status < 500) {
+                alert(err.message)
+            } else if (err.response.status >= 500 ) { 
+                alert(err.message)
+            } 
+        })
     },[])
     return (
         <>
