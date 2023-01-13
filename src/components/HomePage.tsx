@@ -12,6 +12,22 @@ const HomePage = () => {
     console.log (product)
 
     useEffect(() => {
+        if (inputValue>0) {
+            axios.get(`https://reqres.in/api/products/${inputValue}`)
+        .then((response) => {
+            setProduct(response.data.data)
+            console.log('inputValue!!!')
+            console.log(response.data.data)
+        })
+        .catch((err) => {
+            if (err.response.status < 500) {
+                alert(err.message)
+            } else if (err.response.status >= 500 ) { 
+                alert(err.message)
+            } 
+        })
+        } else {
+
         axios.get(`https://reqres.in/api/products?per_page=${5}&page=${1}`)
         .then((response) => {
             setProduct(response.data.data)
@@ -23,7 +39,8 @@ const HomePage = () => {
                 alert(err.message)
             } 
         })
-    },[])
+        }
+    },[inputValue])
     return (
         <>
             <SearchBar setInputValue={setInputValue}/>
@@ -40,6 +57,7 @@ const HomePage = () => {
                     {product.length >1 && product.map((el:Product) => {
                         return <ProductTable product={el} key = {el.id} />
                      } ) }
+                    {inputValue>0 && <ProductTable product ={product as unknown as Product} key = {0} /> }
                 </TableBody>
             </Table>
         </TableContainer>
