@@ -1,9 +1,10 @@
 import React from 'react';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
     <div className="App">
-      Codibly Frontend Developer Intern task
+      <HomePage />
     </div>
   );
 }
