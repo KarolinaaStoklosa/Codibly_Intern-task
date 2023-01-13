@@ -9,7 +9,7 @@ const HomePage = () => {
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://reqres.in/api/products?per_page=${5}&page=${3}`)
+        axios.get(`https://reqres.in/api/products?per_page=${5}&page=${1}`)
         .then((response) => {
             setProduct(response.data.data)
             console.log(response.data)

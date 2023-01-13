@@ -1,20 +1,63 @@
 import React from 'react';
 import { ProductProps } from '../helpers/interfaces';
-import {  TableRow, TableCell } from '@mui/material';
+import {  TableRow, TableCell, Modal, Box, Typography } from '@mui/material';
+
+const modalStyle = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
+    
 
 const ProductTable: React.FC<ProductProps> = (product, key) => {
-    const bgColor = product.product.color;
-    console.log(product.product.color)
+
+    const {id, name, year, color, pantone_value} = product.product
+
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return (
-        <TableRow
-            key={key} sx={{backgroundColor:bgColor}}
+        <>
+            <TableRow
+                key={key} sx={{backgroundColor:color}} onClick={handleOpen}
+                >
+                <TableCell component="th" scope="row" >{id}</TableCell>
+                <TableCell>{name}</TableCell>
+                <TableCell>{year}</TableCell>
+            </TableRow>
+
+            <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
             >
-            <TableCell component="th" scope="row" >
-                {product.product.id}
-            </TableCell>
-            <TableCell>{product.product.name}</TableCell>
-            <TableCell>{product.product.year}</TableCell>
-        </TableRow>
+                <Box sx={modalStyle}>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        id: {id}
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        name: {name}
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        year: {year}
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        colour: {color}
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        pantone value: {pantone_value}
+                    </Typography>
+                </Box>
+            </Modal>
+        </>
 
     )
 }

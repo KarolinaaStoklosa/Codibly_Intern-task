@@ -3,7 +3,7 @@ export interface Product {
     name: string,
     year: number,
     color: string,
-    panotne_value: string
+    pantone_value: string
 }
 
 export interface ProductProps {
