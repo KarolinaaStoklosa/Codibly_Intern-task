@@ -25,7 +25,7 @@ const ItemTable: React.FC<ItemProps> = (item, key) => {
 
     return (
         <>
-            <TableRow
+            <TableRow data-testid="table-row"
                 key={key} sx={{backgroundColor:color}} onClick={handleOpen}
                 >
                 <TableCell component="th" scope="row" >{id}</TableCell>
@@ -34,6 +34,7 @@ const ItemTable: React.FC<ItemProps> = (item, key) => {
             </TableRow>
 
             <Modal
+            data-testid="modal"
             open={open}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"

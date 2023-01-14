@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItemTableTests Table row shows correct values 1`] = `
+<div>
+  <tr
+    class="MuiTableRow-root css-1i5bg5i-MuiTableRow-root"
+    data-testid="table-row"
+  >
+    <th
+      class="MuiTableCell-root MuiTableCell-sizeMedium css-bsph2u-MuiTableCell-root"
+      scope="row"
+    >
+      1
+    </th>
+    <td
+      class="MuiTableCell-root MuiTableCell-sizeMedium css-bsph2u-MuiTableCell-root"
+    >
+      red
+    </td>
+    <td
+      class="MuiTableCell-root MuiTableCell-sizeMedium css-bsph2u-MuiTableCell-root"
+    >
+      2022
+    </td>
+  </tr>
+</div>
+`;

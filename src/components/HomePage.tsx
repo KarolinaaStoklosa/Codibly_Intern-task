@@ -17,7 +17,6 @@ const HomePage = () => {
     const [inputValue, setInputValue] = useState(0);
 
     const [item, setItem] = useState<Item[]>([]);
-    console.log (item)
 
     useEffect(() => {
         if (inputValue>0) {
@@ -66,8 +65,8 @@ const HomePage = () => {
                     {inputValue>0 && <ItemTable item ={item as unknown as Item} key = {0} /> }
                 </TableBody>
             </Table>
-        </TableContainer>
-        <TablePagination
+            </TableContainer>
+            <TablePagination
             sx={{width:'25%', mx:'auto'}}
             rowsPerPageOptions={[5]}
             component="div"
@@ -75,7 +74,7 @@ const HomePage = () => {
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
-        /> 
+            /> 
         </>
     )
         

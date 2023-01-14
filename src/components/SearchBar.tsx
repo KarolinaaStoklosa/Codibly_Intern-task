@@ -7,14 +7,13 @@ const SearchBar:React.FC<SearchFormProps> = ({setInputValue}) => {
     const {register, handleSubmit} = useForm<SearchFormData>();
     let inputHandler = (data:SearchFormData) => {
         setInputValue(data.inputValue)
-        console.log(data.inputValue)
     }
     return (
         <>
             <form
                 onChange = {handleSubmit(inputHandler)} >
-            <Input 
-            {...register("inputValue",{})}
+                <Input 
+                {...register("inputValue",{})}
                 sx={{width:'25%', display: 'block', mx:'auto', marginTop:'1rem', borderRadius:'.2rem', border:'solid 1px'}} 
                 type="number"
                 slotProps={{
@@ -25,7 +24,7 @@ const SearchBar:React.FC<SearchFormProps> = ({setInputValue}) => {
                         step: 1,
                     },
                 }}
-            />
+                />
             </form>
         </>
     )
