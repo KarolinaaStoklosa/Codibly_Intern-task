@@ -1,4 +1,4 @@
-export interface Product {
+export interface Item {
     id: number,
     name: string,
     year: number,
@@ -6,8 +6,8 @@ export interface Product {
     pantone_value: string
 }
 
-export interface ProductProps {
-    product: Product,
+export interface ItemProps {
+    item: Item,
     key: number,
 }
 

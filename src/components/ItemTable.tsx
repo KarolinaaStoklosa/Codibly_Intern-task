@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProductProps } from '../helpers/interfaces';
+import { ItemProps } from '../helpers/interfaces';
 import {  TableRow, TableCell, Modal, Box, Typography } from '@mui/material';
 
 const modalStyle = {
@@ -15,9 +15,9 @@ const modalStyle = {
   };
     
 
-const ProductTable: React.FC<ProductProps> = (product, key) => {
+const ItemTable: React.FC<ItemProps> = (item, key) => {
 
-    const {id, name, year, color, pantone_value} = product.product
+    const {id, name, year, color, pantone_value} = item.item
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -50,7 +50,7 @@ const ProductTable: React.FC<ProductProps> = (product, key) => {
                         year: {year}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        colour: {color}
+                        color: {color}
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         pantone value: {pantone_value}
@@ -62,4 +62,4 @@ const ProductTable: React.FC<ProductProps> = (product, key) => {
     )
 }
 
-export default ProductTable;
+export default ItemTable;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Product } from '../helpers/interfaces';
-import ProductTable from './ProductTable';
-import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, TablePagination, Box } from '@mui/material';
+import { Item } from '../helpers/interfaces';
+import ItemTable from './ItemTable'
+import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, TablePagination } from '@mui/material';
 import SearchBar from './SearchBar';
 
 const HomePage = () => {
@@ -13,19 +13,17 @@ const HomePage = () => {
     const handleChangePage = (event: unknown, newPage: number) => {
       setPage(newPage);
     };
-    console.log(page)
-
 
     const [inputValue, setInputValue] = useState(0);
 
-    const [product, setProduct] = useState<Product[]>([]);
-    console.log (product)
+    const [item, setItem] = useState<Item[]>([]);
+    console.log (item)
 
     useEffect(() => {
         if (inputValue>0) {
             axios.get(`https://reqres.in/api/products/${inputValue}`)
         .then((response) => {
-            setProduct(response.data.data)
+            setItem(response.data.data)
         })
         .catch((err) => {
             if (err.response.status < 500) {
@@ -37,7 +35,7 @@ const HomePage = () => {
         } else {
         axios.get(`https://reqres.in/api/products?per_page=${rowsPerPage}&page=${page+1}`)
         .then((response) => {
-            setProduct(response.data.data)
+            setItem(response.data.data)
         })
         .catch((err) => {
             if (err.response.status < 500) {
@@ -61,11 +59,11 @@ const HomePage = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {product.length >1 && product.map((el:Product) => {
-                        return <ProductTable product={el} key = {el.id} />
+                    {item.length >1 && item.map((el:Item) => {
+                        return <ItemTable item={el} key = {el.id} />
                      } ) }
                      {/* // TODO: remove unknown */}
-                    {inputValue>0 && <ProductTable product ={product as unknown as Product} key = {0} /> }
+                    {inputValue>0 && <ItemTable item ={item as unknown as Item} key = {0} /> }
                 </TableBody>
             </Table>
         </TableContainer>
