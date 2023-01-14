@@ -18,6 +18,7 @@ const modalStyle = {
 const ItemTable: React.FC<ItemProps> = (item, key) => {
 
     const {id, name, year, color, pantone_value} = item.item
+    modalStyle.bgcolor = color
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -26,20 +27,19 @@ const ItemTable: React.FC<ItemProps> = (item, key) => {
     return (
         <>
             <TableRow data-testid="table-row"
-                key={key} sx={{backgroundColor:color}} onClick={handleOpen}
+                key={key} sx={{bgcolor: color}} onClick={handleOpen}
                 >
                 <TableCell component="th" scope="row" >{id}</TableCell>
                 <TableCell>{name}</TableCell>
                 <TableCell>{year}</TableCell>
             </TableRow>
-
             <Modal
-            data-testid="modal"
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-            >
+                data-testid="modal"
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                >
                 <Box sx={modalStyle}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         id: {id}
