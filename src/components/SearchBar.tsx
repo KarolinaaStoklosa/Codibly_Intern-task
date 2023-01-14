@@ -14,15 +14,15 @@ const SearchBar:React.FC<SearchFormProps> = ({setInputValue}) => {
             <form
                 onChange = {handleSubmit(inputHandler)} >
             <Input 
-            {...register("inputValue",{required:true})}
-                sx={{width:'25%', display: 'block', mx:'auto', marginTop:'1rem'}} 
-                id="outlined-number"
+            {...register("inputValue",{})}
+                sx={{width:'25%', display: 'block', mx:'auto', marginTop:'1rem', borderRadius:'.2rem', border:'solid 1px'}} 
                 type="number"
                 slotProps={{
                     input: {
-                    min: 1,
-                    max: 12,
-                    step: 1,
+                        style:{textAlign:'center'},
+                        min: 1,
+                        max: 12,
+                        step: 1,
                     },
                 }}
             />
