@@ -27,7 +27,7 @@ const ItemTable: React.FC<ItemProps> = (item, key) => {
     return (
         <>
             <TableRow data-testid="table-row"
-                key={key} sx={{bgcolor: color}} onClick={handleOpen}
+                hover key={key} sx={{bgcolor: color, cursor:'pointer'}} onClick={handleOpen}
                 >
                 <TableCell component="th" scope="row" >{id}</TableCell>
                 <TableCell>{name}</TableCell>
