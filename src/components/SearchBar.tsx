@@ -11,7 +11,7 @@ const SearchBar:React.FC<SearchFormProps> = ({setInputValue}) => {
     return (
         <>
             <form
-                onChange = {handleSubmit(inputHandler)} >
+                onSubmit = {handleSubmit(inputHandler)} >
                 <Input 
                 {...register("inputValue",{})}
                 sx={{width:'25%', display: 'block', mx:'auto', marginTop:'1rem', borderRadius:'.2rem', border:'solid 1px'}} 

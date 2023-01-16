@@ -17,12 +17,15 @@ const HomePage = () => {
     const [inputValue, setInputValue] = useState(0);
 
     const [item, setItem] = useState<Item[]>([]);
+    const [totalItemsValue, setTotalItemsValue] = useState(0);
 
     useEffect(() => {
         if (inputValue>0) {
             axios.get(`https://reqres.in/api/products/${inputValue}`)
         .then((response) => {
             setItem(response.data.data)
+            setTotalItemsValue(1)
+            console.log(response)
         })
         .catch((err) => {
             if (err.response.status < 500) {
@@ -35,6 +38,7 @@ const HomePage = () => {
         axios.get(`https://reqres.in/api/products?per_page=${rowsPerPage}&page=${page+1}`)
         .then((response) => {
             setItem(response.data.data)
+            setTotalItemsValue(response.data.total)
         })
         .catch((err) => {
             if (err.response.status < 500) {
@@ -70,7 +74,7 @@ const HomePage = () => {
             sx={{width:'25%', mx:'auto'}}
             rowsPerPageOptions={[5]}
             component="div"
-            count={12}
+            count={totalItemsValue}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
